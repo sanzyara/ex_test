@@ -1,0 +1,14 @@
+<div class="grid-x grid-margin-x">
+    <div class="cell large-12 warning">
+        Подтвердите удаление.
+    </div>
+</div>
+
+<% form({method: :post},{obj: {} }) do |f| %>
+    <div class="grid-x grid-margin-x">
+        <div class="large-12 cell">
+            <%= f.button(value: 'Удалить', class: 'button')%>
+            <a href="/list" class="button secondary">Отмена</a>
+        </div>
+    </div> 
+<%end%>

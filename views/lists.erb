@@ -1,0 +1,65 @@
+<div class="grid-x">
+    <div class="cell large-12">
+        <h3>Users List</h3>
+    </div>
+
+
+    <div class="large-4 cell">
+        <a href ="/new" class="button">Add</a>
+    </div>
+    <div class="large-4 cell">
+        <a href ="/statistic" class="button">Statistic</a>
+    </div>
+
+    <% form({ method: :get }, { obj: @parameters }) do |f| %>
+      <div class="grid-x grid-padding-x">
+        <div class="large-4 cell">
+          <%= f.input(:number, type: :integer, placeholder: '', label: 'Number') %>
+        </div>
+        <div class="large-4 cell">
+          <%= f.input(:name_f, type: :text, label: 'Фамилия', placeholder: 'Second') %>
+        </div>
+        <div class="large-12 cell">
+          <%= f.button(value: 'Фильтровать', class: 'button') %>
+        </div>
+      </div>
+    <% end %>
+
+
+
+    <% if @users.size == 0 %>
+        <div class="cell large-12 callout warning">
+            Нет абонентов
+        </div>
+    <%else%>
+        <div class="large-12 cell">
+            <table>
+            <thead>
+                <tr>
+                <th>id</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Номер</th>
+                <th>Тариф</th>
+                <th>Минуты</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @users.each do |user| %>
+                <tr>
+                    <td><%= user.id%></td>
+                    <td><%= user.name_one %></td>
+                    <td><%= user.name_two %></td>
+                    <td><%= user.number %></td>
+                    <td><%= user.rate %></td>
+                    <td><%= user.min %></td>
+                    <td><a class="button warning" href="/<%= user.id%>/delete">Удалить</td>
+                </tr>
+                <% end %>
+            </tbody>
+            </table>
+            <% end %>
+        </div>
+
+
+</div>
